@@ -161,7 +161,7 @@ function generateHTML(data) {
     </div>
 
     <div class="footer">
-      <span>HubSpot Academy · Certificación SEO</span>
+      <span>HubSpot Academy · Certificación en optimización para motores de búsqueda (AEO)</span>
       <span>${sitio} · ${fecha}</span>
     </div>
   </div>
