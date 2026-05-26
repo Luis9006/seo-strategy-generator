@@ -10,57 +10,71 @@ const COLORS = {
   text: "#33475B",
 };
 
-const steps = ["Diagnóstico", "Objetivos", "KPIs", "Estrategias", "Resultado"];
+const steps = ["Tu sitio web", "Autoridad SEO", "Objetivo SMART", "KPIs", "Estrategias"];
 
 const industrias = ["E-commerce", "Servicios profesionales", "Educación", "Salud y bienestar", "Tecnología", "Medios y entretenimiento", "Otro"];
+
 const nivelesAutoridad = [
-  { id: "bajo", label: "Bajo", desc: "Pocos o ningún enlace externo. Sitio relativamente nuevo." },
-  { id: "medio", label: "Medio", desc: "Algunos enlaces externos. Presencia establecida pero limitada." },
-  { id: "alto", label: "Alto", desc: "Muchos enlaces externos de calidad. Reconocido en la industria." },
+  {
+    id: "bajo",
+    label: "Autoridad baja",
+    desc: "Pocos o ningún enlace externo. Sitio relativamente nuevo. Google aún está descubriendo tu contenido.",
+    pilar: "Tu prioridad principal es el descubrimiento y la relevancia — asegúrate de que Google pueda rastrear e indexar tu sitio antes de enfocarte en los enlaces externos.",
+  },
+  {
+    id: "medio",
+    label: "Autoridad media",
+    desc: "Algunos enlaces externos. Presencia establecida pero con oportunidades de crecimiento claras.",
+    pilar: "Tienes relevancia establecida. Es momento de equilibrar la creación de contenido con la construcción activa de autoridad a través de enlaces externos de calidad.",
+  },
+  {
+    id: "alto",
+    label: "Autoridad alta",
+    desc: "Muchos enlaces externos de calidad. Tu sitio es reconocido como referente en tu industria.",
+    pilar: "Tu sitio ya tiene autoridad sólida. Enfócate en defender tu posición y crear contenido que genere enlaces de forma natural — como los bestsellers en el estante principal de la biblioteca.",
+  },
 ];
-const recursos = [
-  { id: "limitado", label: "Limitado", desc: "Menos de 5 horas/semana para SEO." },
-  { id: "moderado", label: "Moderado", desc: "Entre 5 y 15 horas/semana para SEO." },
-  { id: "amplio", label: "Amplio", desc: "Más de 15 horas/semana o equipo dedicado." },
-];
+
 const kpisDisponibles = [
-  { id: "trafico", label: "Tráfico orgánico", desc: "Visitas provenientes de búsqueda sin pago." },
-  { id: "palabras", label: "Clasificación de palabras clave", desc: "Posición de tus términos en resultados de búsqueda." },
-  { id: "conversion", label: "Tasa de conversión", desc: "Porcentaje de visitantes que completan una acción." },
-  { id: "rebote", label: "Tasa de rebote", desc: "Visitantes que salen sin interactuar con el sitio." },
-  { id: "carga", label: "Tiempo de carga", desc: "Velocidad con que carga tu sitio web." },
-  { id: "enlaces", label: "Enlaces externos recibidos", desc: "Sitios que enlazan al tuyo como referencia." },
+  { id: "trafico", label: "Tráfico orgánico", desc: "Visitas que llegan a tu sitio desde búsqueda sin pago. Refleja qué tan bien te están descubriendo." },
+  { id: "palabras", label: "Clasificación de palabras clave", desc: "Posición de tus términos en los resultados de búsqueda. Indica tu nivel de relevancia para esas consultas." },
+  { id: "conversion", label: "Tasa de conversión", desc: "Porcentaje de visitantes que completan una acción. Conecta el tráfico orgánico con resultados de negocio." },
+  { id: "rebote", label: "Tasa de rebote", desc: "Visitantes que salen sin interactuar. Una tasa alta puede indicar que el contenido no es relevante para la consulta." },
+  { id: "carga", label: "Tiempo de carga", desc: "Velocidad con que carga tu sitio. Afecta directamente la experiencia del usuario y la clasificación." },
+  { id: "enlaces", label: "Enlaces externos recibidos", desc: "Sitios que enlacen al tuyo. El indicador más directo de autoridad SEO." },
 ];
 
 const estrategiasPorNivel = {
   bajo: [
-    "Crear contenido de blog regularmente sobre tus palabras clave principales",
-    "Optimizar los títulos y meta descripciones de tus páginas existentes",
-    "Asegurarte de que tu sitio sea rastreable e indexable por Google",
-    "Construir tu perfil de enlaces con directorios y menciones básicas",
-    "Optimizar la velocidad de carga de tu sitio",
+    "Verifica que Google puede rastrear e indexar tu sitio — usa Google Search Console para identificar errores de crawling",
+    "Crea contenido estructurado y relevante alrededor de 3 a 5 palabras clave principales de tu industria",
+    "Optimiza los títulos, meta descripciones y estructura de URLs de tus páginas existentes",
+    "Mejora la velocidad de carga de tu sitio — es un factor de clasificación directo para Google",
+    "Registra tu sitio en directorios relevantes de tu industria para comenzar a construir tu perfil de enlaces",
   ],
   medio: [
-    "Desarrollar una estrategia de contenido pillar-cluster para ganar autoridad temática",
-    "Buscar oportunidades de guest posting en sitios de tu industria",
-    "Auditar y mejorar el contenido existente que ya tiene tráfico",
-    "Construir enlaces internos estratégicos entre tus páginas",
-    "Optimizar para búsqueda local si aplica a tu negocio",
+    "Desarrolla una estrategia de contenido pillar-cluster: un artículo principal por tema y varios artículos secundarios que lo refuercen",
+    "Analiza tu perfil de enlaces externos con una herramienta como Moz o SEMrush e identifica oportunidades",
+    "Busca oportunidades de guest posting en sitios con autoridad en tu industria",
+    "Actualiza y mejora el contenido existente que ya recibe tráfico orgánico — puede clasificar aún mejor",
+    "Construye enlaces internos estratégicos entre tus páginas para distribuir la autoridad dentro de tu sitio",
   ],
   alto: [
-    "Defender y expandir las clasificaciones existentes con contenido actualizado",
-    "Crear contenido de investigación original que genere enlaces naturalmente",
-    "Explorar oportunidades de Featured Snippets y rich results",
-    "Optimizar para búsquedas de intención transaccional de alto valor",
-    "Desarrollar una estrategia de relaciones públicas digitales para amplificar la autoridad",
+    "Crea contenido de investigación original — estudios, encuestas o datos propios — que genere enlaces naturalmente",
+    "Identifica y captura Featured Snippets y rich results para términos clave de tu industria",
+    "Desarrolla una estrategia de relaciones públicas digitales para amplificar tu autoridad con menciones en medios",
+    "Optimiza para búsquedas de alta intención comercial donde tu autoridad te da ventaja competitiva",
+    "Monitorea y actualiza regularmente tu contenido más valioso para mantener su relevancia y clasificación",
   ],
 };
 
+const plazoOptions = ["3 meses", "6 meses", "12 meses", "18 meses"];
+
 function generateHTML(data) {
-  const { sitio, industria, autoridad, recurso, objetivo, plazo, kpis, estrategias } = data;
+  const { sitio, industria, autoridad, objetivo, plazo, kpis, estrategias } = data;
   const fecha = new Date().toLocaleDateString("es-ES", { year: "numeric", month: "long", day: "numeric" });
   const nivelLabel = nivelesAutoridad.find(n => n.id === autoridad)?.label || "";
-  const recursoLabel = recursos.find(r => r.id === recurso)?.label || "";
+  const nivelPilar = nivelesAutoridad.find(n => n.id === autoridad)?.pilar || "";
   const kpiLabels = kpis.map(k => kpisDisponibles.find(d => d.id === k)?.label || k);
 
   return `<!DOCTYPE html>
@@ -70,77 +84,86 @@ function generateHTML(data) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Estrategia SEO — ${sitio}</title>
 <style>
-  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F5F8FA; margin: 0; padding: 32px; color: #33475B; }
-  .card { background: white; border-radius: 12px; padding: 40px; max-width: 760px; margin: 0 auto; box-shadow: 0 2px 16px rgba(0,0,0,0.08); }
-  .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #FF7A59; }
-  .brand { background: #FF7A59; color: white; font-weight: 800; font-size: 11px; letter-spacing: 1px; padding: 6px 12px; border-radius: 6px; }
-  .title { font-size: 22px; font-weight: 800; color: #1C3A56; margin: 0 0 4px; }
-  .subtitle { font-size: 14px; color: #516F90; margin: 0; }
-  .section { margin-bottom: 28px; }
-  .section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #FF7A59; margin-bottom: 12px; }
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .item { background: #F5F8FA; border-radius: 8px; padding: 12px 16px; }
-  .item-label { font-size: 11px; color: #516F90; font-weight: 600; margin-bottom: 4px; }
-  .item-value { font-size: 14px; color: #1C3A56; font-weight: 600; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F5F8FA; padding: 32px 24px; color: #33475B; }
+  .page { max-width: 780px; margin: 0 auto; }
+  .header { background: #1C3A56; border-radius: 12px 12px 0 0; padding: 28px 32px; display: flex; justify-content: space-between; align-items: center; }
+  .header-title { color: white; font-size: 20px; font-weight: 800; }
+  .header-sub { color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 4px; }
+  .badge { background: #FF7A59; color: white; font-size: 10px; font-weight: 800; letter-spacing: 1px; padding: 6px 12px; border-radius: 6px; white-space: nowrap; }
+  .body { background: white; border-radius: 0 0 12px 12px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .section { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid #F5F8FA; }
+  .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .section-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: #FF7A59; margin-bottom: 12px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .info-item { background: #F5F8FA; border-radius: 8px; padding: 12px 16px; }
+  .info-label { font-size: 11px; color: #516F90; font-weight: 600; margin-bottom: 3px; }
+  .info-value { font-size: 14px; color: #1C3A56; font-weight: 700; }
+  .pilar-box { background: #F0F7FF; border-left: 4px solid #1C3A56; border-radius: 0 8px 8px 0; padding: 14px 18px; font-size: 13px; color: #1C3A56; line-height: 1.6; margin-top: 12px; }
   .objetivo-box { background: #FFF5F2; border-left: 4px solid #FF7A59; border-radius: 0 8px 8px 0; padding: 16px 20px; }
-  .objetivo-text { font-size: 15px; color: #1C3A56; font-weight: 600; line-height: 1.5; }
-  .kpi-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-  .kpi-tag { background: #E8F8F6; color: #00BDA5; border-radius: 20px; padding: 5px 14px; font-size: 13px; font-weight: 600; }
-  .estrategia-item { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid #F5F8FA; }
-  .estrategia-num { background: #FF7A59; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-  .estrategia-text { font-size: 14px; color: #33475B; line-height: 1.5; }
-  .footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid #DFE3EB; display: flex; justify-content: space-between; align-items: center; }
-  .footer-text { font-size: 12px; color: #516F90; }
-  .tip { background: #F0FDF4; border-radius: 8px; padding: 14px 16px; font-size: 13px; color: #516F90; line-height: 1.6; }
-  .tip strong { color: #00BDA5; }
-  @media print { body { background: white; padding: 0; } .card { box-shadow: none; } }
+  .objetivo-text { font-size: 15px; color: #1C3A56; font-weight: 700; line-height: 1.5; font-style: italic; }
+  .plazo { font-size: 12px; color: #516F90; margin-top: 6px; }
+  .kpi-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .kpi-tag { background: #E8F8F6; color: #00BDA5; border-radius: 20px; padding: 5px 14px; font-size: 13px; font-weight: 700; }
+  .estrategia-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #F5F8FA; align-items: flex-start; }
+  .estrategia-item:last-child { border-bottom: none; }
+  .num { background: #FF7A59; color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+  .estrategia-text { font-size: 14px; line-height: 1.6; color: #33475B; }
+  .reminder { background: #F0FDF4; border-radius: 8px; padding: 16px 18px; margin-top: 24px; }
+  .reminder-title { font-size: 12px; font-weight: 800; color: #00BDA5; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .reminder-text { font-size: 13px; color: #516F90; line-height: 1.7; }
+  .footer { margin-top: 20px; display: flex; justify-content: space-between; font-size: 11px; color: #516F90; padding-top: 16px; border-top: 1px solid #DFE3EB; }
+  @media print { body { background: white; padding: 0; } .body { box-shadow: none; } }
 </style>
 </head>
 <body>
-<div class="card">
+<div class="page">
   <div class="header">
     <div>
-      <p class="title">Estrategia SEO</p>
-      <p class="subtitle">${sitio} · Generado el ${fecha}</p>
+      <div class="header-title">Estrategia SEO — ${sitio}</div>
+      <div class="header-sub">Generada el ${fecha} · Certificación SEO, HubSpot Academy</div>
     </div>
-    <div class="brand">HUBSPOT ACADEMY</div>
+    <div class="badge">HUBSPOT ACADEMY</div>
   </div>
-
-  <div class="section">
-    <div class="section-title">Perfil del sitio</div>
-    <div class="grid">
-      <div class="item"><div class="item-label">Sitio web</div><div class="item-value">${sitio}</div></div>
-      <div class="item"><div class="item-label">Industria</div><div class="item-value">${industria}</div></div>
-      <div class="item"><div class="item-label">Nivel de autoridad SEO</div><div class="item-value">${nivelLabel}</div></div>
-      <div class="item"><div class="item-label">Recursos disponibles</div><div class="item-value">${recursoLabel}</div></div>
+  <div class="body">
+    <div class="section">
+      <div class="section-label">Perfil del sitio</div>
+      <div class="grid-2">
+        <div class="info-item"><div class="info-label">Sitio web</div><div class="info-value">${sitio}</div></div>
+        <div class="info-item"><div class="info-label">Industria</div><div class="info-value">${industria}</div></div>
+        <div class="info-item"><div class="info-label">Nivel de autoridad SEO</div><div class="info-value">${nivelLabel}</div></div>
+        <div class="info-item"><div class="info-label">Plazo de la estrategia</div><div class="info-value">${plazo}</div></div>
+      </div>
+      <div class="pilar-box">💡 ${nivelPilar}</div>
     </div>
-  </div>
 
-  <div class="section">
-    <div class="section-title">Objetivo SMART</div>
-    <div class="objetivo-box">
-      <div class="objetivo-text">"${objetivo}"</div>
-      <div style="margin-top:8px;font-size:12px;color:#516F90;">Plazo: ${plazo}</div>
+    <div class="section">
+      <div class="section-label">Objetivo SMART</div>
+      <div class="objetivo-box">
+        <div class="objetivo-text">"${objetivo}"</div>
+        <div class="plazo">⏱ Plazo: ${plazo}</div>
+      </div>
     </div>
-  </div>
 
-  <div class="section">
-    <div class="section-title">KPIs seleccionados</div>
-    <div class="kpi-grid">${kpiLabels.map(k => `<span class="kpi-tag">${k}</span>`).join("")}</div>
-  </div>
+    <div class="section">
+      <div class="section-label">KPIs seleccionados</div>
+      <div class="kpi-list">${kpiLabels.map(k => `<span class="kpi-tag">${k}</span>`).join("")}</div>
+    </div>
 
-  <div class="section">
-    <div class="section-title">Estrategias prioritarias</div>
-    ${estrategias.map((e, i) => `<div class="estrategia-item"><div class="estrategia-num">${i + 1}</div><div class="estrategia-text">${e}</div></div>`).join("")}
-  </div>
+    <div class="section">
+      <div class="section-label">Estrategias prioritarias</div>
+      ${estrategias.map((e, i) => `<div class="estrategia-item"><div class="num">${i + 1}</div><div class="estrategia-text">${e}</div></div>`).join("")}
+    </div>
 
-  <div class="tip">
-    <strong>Recuerda:</strong> El SEO es una estrategia acumulativa. Los resultados pueden tardar semanas o meses en aparecer. Revisa tus KPIs mensualmente y ajusta tus estrategias según los datos que obtengas.
-  </div>
+    <div class="reminder">
+      <div class="reminder-title">Recuerda</div>
+      <div class="reminder-text">El SEO es un proceso continuo y acumulativo. No existe una fórmula mágica — los resultados pueden tardar semanas o meses en aparecer. Revisa tus KPIs con regularidad, ajusta tus estrategias según los datos y mantén el enfoque en tus usuarios. A medida que tu sitio crece y genera más autoridad, el efecto se acelera.</div>
+    </div>
 
-  <div class="footer">
-    <div class="footer-text">HubSpot Academy · Certificación SEO</div>
-    <div class="footer-text">Para imprimir como PDF: Ctrl+P → Guardar como PDF</div>
+    <div class="footer">
+      <span>HubSpot Academy · Certificación SEO</span>
+      <span>${sitio} · ${fecha}</span>
+    </div>
   </div>
 </div>
 </body>
@@ -150,38 +173,40 @@ function generateHTML(data) {
 export default function App() {
   const [step, setStep] = useState(0);
   const [data, setData] = useState({
-    sitio: "", industria: "", autoridad: "", recurso: "",
+    sitio: "", industria: "", autoridad: "",
     objetivo: "", plazo: "12 meses", kpis: [], estrategias: [],
   });
   const [done, setDone] = useState(false);
 
   const update = (field, val) => setData(prev => ({ ...prev, [field]: val }));
+
   const toggleKpi = (id) => setData(prev => ({
     ...prev,
-    kpis: prev.kpis.includes(id) ? prev.kpis.filter(k => k !== id) : prev.kpis.length < 4 ? [...prev.kpis, id] : prev.kpis,
+    kpis: prev.kpis.includes(id)
+      ? prev.kpis.filter(k => k !== id)
+      : prev.kpis.length < 4 ? [...prev.kpis, id] : prev.kpis,
+  }));
+
+  const toggleEstrategia = (e) => setData(prev => ({
+    ...prev,
+    estrategias: prev.estrategias.includes(e)
+      ? prev.estrategias.filter(x => x !== e)
+      : [...prev.estrategias, e],
   }));
 
   const canNext = () => {
-    if (step === 0) return data.sitio && data.industria && data.autoridad && data.recurso;
-    if (step === 1) return data.objetivo.length >= 20;
-    if (step === 2) return data.kpis.length >= 1;
-    if (step === 3) return data.estrategias.length >= 1;
+    if (step === 0) return data.sitio.trim().length > 0 && data.industria;
+    if (step === 1) return data.autoridad;
+    if (step === 2) return data.objetivo.trim().length >= 20;
+    if (step === 3) return data.kpis.length >= 1;
+    if (step === 4) return data.estrategias.length >= 1;
     return true;
   };
 
   const handleNext = () => {
-    if (step === 2 && data.estrategias.length === 0) {
-      const sugeridas = estrategiasPorNivel[data.autoridad]?.slice(0, 3) || [];
-      setData(prev => ({ ...prev, estrategias: sugeridas }));
-    }
     if (step === steps.length - 1) { setDone(true); return; }
     setStep(s => s + 1);
   };
-
-  const toggleEstrategia = (e) => setData(prev => ({
-    ...prev,
-    estrategias: prev.estrategias.includes(e) ? prev.estrategias.filter(x => x !== e) : [...prev.estrategias, e],
-  }));
 
   const downloadHTML = () => {
     const html = generateHTML(data);
@@ -194,30 +219,39 @@ export default function App() {
     URL.revokeObjectURL(url);
   };
 
+  const reset = () => {
+    setDone(false);
+    setStep(0);
+    setData({ sitio: "", industria: "", autoridad: "", objetivo: "", plazo: "12 meses", kpis: [], estrategias: [] });
+  };
+
   if (done) return (
     <div style={{ fontFamily: "sans-serif", minHeight: "100vh", background: COLORS.light, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
       <div style={{ maxWidth: 560, width: "100%", background: "white", borderRadius: 16, padding: 40, textAlign: "center", boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
-        <div style={{ fontSize: 52, marginBottom: 12 }}>🎉</div>
-        <h2 style={{ color: COLORS.teal, margin: "0 0 12px", fontSize: 22 }}>¡Tu estrategia SEO está lista!</h2>
-        <p style={{ color: COLORS.slate, lineHeight: 1.7, margin: "0 0 24px", fontSize: 15 }}>
-          Descarga tu estrategia como página web con branding. Puedes abrirla en cualquier navegador e imprimirla como PDF con Ctrl+P.
+        <div style={{ fontSize: 52, marginBottom: 12 }}>🎯</div>
+        <h2 style={{ color: COLORS.navy, margin: "0 0 12px", fontSize: 22 }}>Tu estrategia SEO está lista</h2>
+        <p style={{ color: COLORS.slate, lineHeight: 1.7, margin: "0 0 24px", fontSize: 14 }}>
+          Definiste tu objetivo SMART, seleccionaste tus KPIs y priorizaste las estrategias más relevantes para el nivel de autoridad de tu sitio. Descarga tu estrategia para consultarla cuando la necesites.
         </p>
         <div style={{ background: COLORS.light, borderRadius: 10, padding: "16px 20px", marginBottom: 24, textAlign: "left" }}>
-          <div style={{ fontSize: 13, fontWeight: 700, color: COLORS.navy, marginBottom: 8 }}>Resumen de tu estrategia</div>
-          <div style={{ fontSize: 13, color: COLORS.slate, lineHeight: 1.8 }}>
+          <div style={{ fontSize: 12, fontWeight: 800, color: COLORS.orange, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 10 }}>Resumen</div>
+          <div style={{ fontSize: 13, color: COLORS.text, lineHeight: 2 }}>
             <div>🌐 <strong>Sitio:</strong> {data.sitio}</div>
-            <div>🎯 <strong>Objetivo:</strong> {data.objetivo}</div>
-            <div>📊 <strong>KPIs:</strong> {data.kpis.length} seleccionados</div>
-            <div>⚡ <strong>Estrategias:</strong> {data.estrategias.length} priorizadas</div>
+            <div>📊 <strong>Autoridad:</strong> {nivelesAutoridad.find(n => n.id === data.autoridad)?.label}</div>
+            <div>🎯 <strong>Objetivo:</strong> {data.objetivo.length > 60 ? data.objetivo.slice(0, 60) + "..." : data.objetivo}</div>
+            <div>📈 <strong>KPIs:</strong> {data.kpis.length} seleccionados · <strong>Estrategias:</strong> {data.estrategias.length} priorizadas</div>
           </div>
+        </div>
+        <div style={{ background: "#F0FDF4", borderRadius: 8, padding: "12px 16px", marginBottom: 24, fontSize: 13, color: COLORS.slate, lineHeight: 1.6, textAlign: "left" }}>
+          <strong style={{ color: COLORS.teal }}>Próximo paso:</strong> Comparte esta estrategia con tu equipo, establece una fecha de revisión mensual de tus KPIs y recuerda que el SEO es acumulativo — los resultados mejoran con consistencia.
         </div>
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
           <button onClick={downloadHTML}
             style={{ background: COLORS.teal, color: "white", border: "none", borderRadius: 8, padding: "12px 28px", fontWeight: 700, fontSize: 14, cursor: "pointer" }}>
             ⬇️ Descargar estrategia
           </button>
-          <button onClick={() => { setDone(false); setStep(0); setData({ sitio: "", industria: "", autoridad: "", recurso: "", objetivo: "", plazo: "12 meses", kpis: [], estrategias: [] }); }}
-            style={{ background: COLORS.orange, color: "white", border: "none", borderRadius: 8, padding: "12px 28px", fontWeight: 700, fontSize: 14, cursor: "pointer" }}>
+          <button onClick={reset}
+            style={{ background: COLORS.light, color: COLORS.slate, border: `1px solid ${COLORS.border}`, borderRadius: 8, padding: "12px 28px", fontWeight: 600, fontSize: 14, cursor: "pointer" }}>
             Crear otra estrategia
           </button>
         </div>
@@ -227,19 +261,17 @@ export default function App() {
 
   return (
     <div style={{ fontFamily: "sans-serif", minHeight: "100vh", background: COLORS.light }}>
-      {/* Header */}
-      <div style={{ background: "white", borderBottom: `1px solid ${COLORS.border}`, padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", position: "sticky", top: 0, zIndex: 10 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+      <div style={{ background: COLORS.navy, padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", position: "sticky", top: 0, zIndex: 10 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <div style={{ background: COLORS.orange, borderRadius: 6, padding: "4px 10px" }}>
             <span style={{ color: "white", fontWeight: 700, fontSize: 11, letterSpacing: 0.5 }}>HUBSPOT ACADEMY</span>
           </div>
-          <span style={{ fontWeight: 700, fontSize: 15, color: COLORS.navy }}>Generador de Estrategia SEO</span>
+          <span style={{ fontWeight: 700, fontSize: 15, color: "white" }}>Generador de Estrategia SEO</span>
         </div>
-        <span style={{ fontSize: 13, color: COLORS.slate }}>Paso {step + 1} de {steps.length}</span>
+        <span style={{ fontSize: 12, color: "rgba(255,255,255,0.6)" }}>Paso {step + 1} de {steps.length}</span>
       </div>
 
       <div style={{ maxWidth: 680, margin: "0 auto", padding: "24px 16px" }}>
-        {/* Progress */}
         <div style={{ display: "flex", gap: 6, marginBottom: 28 }}>
           {steps.map((s, i) => (
             <div key={s} style={{ flex: 1 }}>
@@ -249,84 +281,87 @@ export default function App() {
           ))}
         </div>
 
-        {/* Step 0 — Diagnóstico */}
+        {/* Paso 0 — Tu sitio web */}
         {step === 0 && (
           <div style={{ background: "white", borderRadius: 14, padding: 28, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
             <h2 style={{ fontSize: 18, fontWeight: 800, color: COLORS.navy, margin: "0 0 6px" }}>Cuéntanos sobre tu sitio</h2>
-            <p style={{ color: COLORS.slate, fontSize: 14, margin: "0 0 24px" }}>Esta información nos ayudará a personalizar tu estrategia SEO.</p>
-
-            <div style={{ marginBottom: 16 }}>
-              <label style={{ fontSize: 13, fontWeight: 700, color: COLORS.slate, display: "block", marginBottom: 6 }}>Nombre o URL de tu sitio web *</label>
-              <input value={data.sitio} onChange={e => update("sitio", e.target.value)} placeholder="ejemplo: miblog.com o Mi Empresa"
+            <p style={{ color: COLORS.slate, fontSize: 14, margin: "0 0 24px", lineHeight: 1.6 }}>
+              Piensa en tu sitio web como una casa dentro de una gran ciudad. Para definir tu estrategia SEO, primero necesitamos entender en qué parte de esa ciudad estás y a qué audiencia le hablas.
+            </p>
+            <div style={{ marginBottom: 18 }}>
+              <label style={{ fontSize: 13, fontWeight: 700, color: COLORS.slate, display: "block", marginBottom: 6 }}>Nombre o URL de tu sitio *</label>
+              <input value={data.sitio} onChange={e => update("sitio", e.target.value)}
+                placeholder="ej: miblog.com o Nombre de tu empresa"
                 style={{ width: "100%", padding: "10px 12px", border: `1px solid ${COLORS.border}`, borderRadius: 7, fontSize: 14, color: COLORS.text, boxSizing: "border-box" }} />
             </div>
-
-            <div style={{ marginBottom: 20 }}>
-              <label style={{ fontSize: 13, fontWeight: 700, color: COLORS.slate, display: "block", marginBottom: 6 }}>Industria *</label>
+            <div>
+              <label style={{ fontSize: 13, fontWeight: 700, color: COLORS.slate, display: "block", marginBottom: 8 }}>¿En qué industria opera tu sitio? *</label>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                 {industrias.map(ind => (
                   <button key={ind} onClick={() => update("industria", ind)}
-                    style={{ padding: "7px 14px", borderRadius: 20, border: `1.5px solid ${data.industria === ind ? COLORS.orange : COLORS.border}`, background: data.industria === ind ? COLORS.orange : "white", color: data.industria === ind ? "white" : COLORS.slate, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>
+                    style={{ padding: "8px 16px", borderRadius: 20, border: `1.5px solid ${data.industria === ind ? COLORS.orange : COLORS.border}`, background: data.industria === ind ? COLORS.orange : "white", color: data.industria === ind ? "white" : COLORS.slate, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>
                     {ind}
                   </button>
                 ))}
               </div>
             </div>
-
-            <div style={{ marginBottom: 20 }}>
-              <label style={{ fontSize: 13, fontWeight: 700, color: COLORS.slate, display: "block", marginBottom: 6 }}>Nivel de autoridad SEO actual *</label>
-              {nivelesAutoridad.map(n => (
-                <div key={n.id} onClick={() => update("autoridad", n.id)}
-                  style={{ padding: "12px 16px", border: `1.5px solid ${data.autoridad === n.id ? COLORS.orange : COLORS.border}`, borderRadius: 8, marginBottom: 8, cursor: "pointer", background: data.autoridad === n.id ? "#FFF5F2" : "white" }}>
-                  <div style={{ fontWeight: 700, fontSize: 14, color: COLORS.navy }}>{n.label}</div>
-                  <div style={{ fontSize: 13, color: COLORS.slate, marginTop: 2 }}>{n.desc}</div>
-                </div>
-              ))}
-            </div>
-
-            <div>
-              <label style={{ fontSize: 13, fontWeight: 700, color: COLORS.slate, display: "block", marginBottom: 6 }}>Recursos disponibles para SEO *</label>
-              {recursos.map(r => (
-                <div key={r.id} onClick={() => update("recurso", r.id)}
-                  style={{ padding: "12px 16px", border: `1.5px solid ${data.recurso === r.id ? COLORS.orange : COLORS.border}`, borderRadius: 8, marginBottom: 8, cursor: "pointer", background: data.recurso === r.id ? "#FFF5F2" : "white" }}>
-                  <div style={{ fontWeight: 700, fontSize: 14, color: COLORS.navy }}>{r.label}</div>
-                  <div style={{ fontSize: 13, color: COLORS.slate, marginTop: 2 }}>{r.desc}</div>
-                </div>
-              ))}
-            </div>
           </div>
         )}
 
-        {/* Step 1 — Objetivo SMART */}
+        {/* Paso 1 — Autoridad SEO */}
         {step === 1 && (
           <div style={{ background: "white", borderRadius: 14, padding: 28, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
-            <h2 style={{ fontSize: 18, fontWeight: 800, color: COLORS.navy, margin: "0 0 6px" }}>Define tu objetivo SMART</h2>
-            <p style={{ color: COLORS.slate, fontSize: 14, margin: "0 0 20px" }}>Un objetivo SMART es específico, medible, alcanzable, relevante y limitado en el tiempo.</p>
+            <h2 style={{ fontSize: 18, fontWeight: 800, color: COLORS.navy, margin: "0 0 6px" }}>¿Cuál es tu nivel de autoridad SEO?</h2>
+            <p style={{ color: COLORS.slate, fontSize: 14, margin: "0 0 6px", lineHeight: 1.6 }}>
+              La autoridad SEO se determina principalmente por la calidad y cantidad de enlaces externos que apuntan a tu sitio — como las citas en otros libros que le dan credibilidad al tuyo.
+            </p>
+            <div style={{ background: "#F0F7FF", borderRadius: 8, padding: "10px 14px", marginBottom: 20, fontSize: 13, color: COLORS.navy }}>
+              💡 Si no estás seguro de tu nivel de autoridad, puedes medirlo con herramientas gratuitas como Moz, SEMrush o Ahrefs analizando tu perfil de enlaces externos.
+            </div>
+            {nivelesAutoridad.map(n => (
+              <div key={n.id} onClick={() => update("autoridad", n.id)}
+                style={{ padding: "14px 16px", border: `1.5px solid ${data.autoridad === n.id ? COLORS.orange : COLORS.border}`, borderRadius: 9, marginBottom: 10, cursor: "pointer", background: data.autoridad === n.id ? "#FFF5F2" : "white" }}>
+                <div style={{ fontWeight: 700, fontSize: 14, color: COLORS.navy, marginBottom: 3 }}>{n.label}</div>
+                <div style={{ fontSize: 13, color: COLORS.slate, lineHeight: 1.5 }}>{n.desc}</div>
+                {data.autoridad === n.id && (
+                  <div style={{ marginTop: 10, fontSize: 13, color: COLORS.navy, background: "#F0F7FF", borderRadius: 6, padding: "8px 12px", lineHeight: 1.6 }}>
+                    🎯 {n.pilar}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
 
+        {/* Paso 2 — Objetivo SMART */}
+        {step === 2 && (
+          <div style={{ background: "white", borderRadius: 14, padding: 28, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+            <h2 style={{ fontSize: 18, fontWeight: 800, color: COLORS.navy, margin: "0 0 6px" }}>Define tu objetivo SMART</h2>
+            <p style={{ color: COLORS.slate, fontSize: 14, margin: "0 0 16px", lineHeight: 1.6 }}>
+              Un objetivo SMART es específico, medible, alcanzable, relevante y limitado en el tiempo. Sin objetivos claros, no podrás saber si tus iniciativas de SEO realmente están dando resultados.
+            </p>
             <div style={{ background: COLORS.light, borderRadius: 8, padding: "12px 16px", marginBottom: 20 }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: COLORS.orange, marginBottom: 4 }}>EJEMPLO</div>
-              <div style={{ fontSize: 13, color: COLORS.text, lineHeight: 1.6 }}>
-                "Quiero aumentar el tráfico orgánico de mi sitio en un 40% en los próximos 12 meses publicando dos artículos optimizados por semana."
+              <div style={{ fontSize: 11, fontWeight: 800, color: COLORS.orange, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>Ejemplo de objetivo SMART</div>
+              <div style={{ fontSize: 13, color: COLORS.text, lineHeight: 1.7, fontStyle: "italic" }}>
+                "Quiero aumentar el tráfico orgánico de mi sitio en un 40% en los próximos 12 meses, publicando dos artículos optimizados por semana sobre las palabras clave principales de mi industria."
               </div>
             </div>
-
             <div style={{ marginBottom: 20 }}>
               <label style={{ fontSize: 13, fontWeight: 700, color: COLORS.slate, display: "block", marginBottom: 6 }}>Tu objetivo SEO *</label>
               <textarea value={data.objetivo} onChange={e => update("objetivo", e.target.value)}
                 placeholder="Escribe tu objetivo específico aquí..."
                 rows={4}
-                style={{ width: "100%", padding: "10px 12px", border: `1px solid ${COLORS.border}`, borderRadius: 7, fontSize: 14, color: COLORS.text, boxSizing: "border-box", resize: "vertical" }} />
+                style={{ width: "100%", padding: "10px 12px", border: `1px solid ${data.objetivo.length >= 20 ? COLORS.teal : COLORS.border}`, borderRadius: 7, fontSize: 14, color: COLORS.text, boxSizing: "border-box", resize: "vertical" }} />
               <div style={{ fontSize: 12, color: data.objetivo.length >= 20 ? COLORS.teal : COLORS.slate, marginTop: 4 }}>
-                {data.objetivo.length >= 20 ? "✓ Objetivo válido" : `Mínimo 20 caracteres (${data.objetivo.length}/20)`}
+                {data.objetivo.length >= 20 ? "✓ Objetivo listo" : `Sé específico — mínimo 20 caracteres (${data.objetivo.length}/20)`}
               </div>
             </div>
-
             <div>
               <label style={{ fontSize: 13, fontWeight: 700, color: COLORS.slate, display: "block", marginBottom: 8 }}>Plazo para alcanzarlo</label>
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                {["3 meses", "6 meses", "12 meses", "18 meses"].map(p => (
+                {plazoOptions.map(p => (
                   <button key={p} onClick={() => update("plazo", p)}
-                    style={{ padding: "8px 16px", borderRadius: 20, border: `1.5px solid ${data.plazo === p ? COLORS.orange : COLORS.border}`, background: data.plazo === p ? COLORS.orange : "white", color: data.plazo === p ? "white" : COLORS.slate, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>
+                    style={{ padding: "8px 18px", borderRadius: 20, border: `1.5px solid ${data.plazo === p ? COLORS.orange : COLORS.border}`, background: data.plazo === p ? COLORS.orange : "white", color: data.plazo === p ? "white" : COLORS.slate, fontSize: 13, fontWeight: 600, cursor: "pointer" }}>
                     {p}
                   </button>
                 ))}
@@ -335,51 +370,57 @@ export default function App() {
           </div>
         )}
 
-        {/* Step 2 — KPIs */}
-        {step === 2 && (
+        {/* Paso 3 — KPIs */}
+        {step === 3 && (
           <div style={{ background: "white", borderRadius: 14, padding: 28, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
             <h2 style={{ fontSize: 18, fontWeight: 800, color: COLORS.navy, margin: "0 0 6px" }}>Selecciona tus KPIs</h2>
-            <p style={{ color: COLORS.slate, fontSize: 14, margin: "0 0 20px" }}>Elige entre 1 y 4 indicadores clave que te ayudarán a medir el progreso hacia tu objetivo.</p>
+            <p style={{ color: COLORS.slate, fontSize: 14, margin: "0 0 6px", lineHeight: 1.6 }}>
+              Los KPIs son los indicadores que te dirán si tu estrategia SEO está dando resultados. Elige entre 1 y 4 indicadores que estén directamente relacionados con tu objetivo.
+            </p>
+            <div style={{ background: COLORS.light, borderRadius: 8, padding: "10px 14px", marginBottom: 18, fontSize: 13, color: COLORS.slate }}>
+              💡 Los KPIs deben alinearse con tu objetivo SMART. Si quieres aumentar el tráfico orgánico, el indicador de tráfico orgánico debe estar en tu lista.
+            </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {kpisDisponibles.map(k => {
-                const selected = data.kpis.includes(k.id);
+                const sel = data.kpis.includes(k.id);
                 return (
                   <div key={k.id} onClick={() => toggleKpi(k.id)}
-                    style={{ padding: "14px 16px", border: `1.5px solid ${selected ? COLORS.teal : COLORS.border}`, borderRadius: 9, cursor: "pointer", background: selected ? "#E8F8F6" : "white", display: "flex", alignItems: "center", gap: 12 }}>
-                    <div style={{ width: 22, height: 22, borderRadius: "50%", border: `2px solid ${selected ? COLORS.teal : COLORS.border}`, background: selected ? COLORS.teal : "white", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      {selected && <span style={{ color: "white", fontSize: 13, fontWeight: 800 }}>✓</span>}
+                    style={{ padding: "13px 16px", border: `1.5px solid ${sel ? COLORS.teal : COLORS.border}`, borderRadius: 9, cursor: "pointer", background: sel ? "#E8F8F6" : "white", display: "flex", alignItems: "center", gap: 12 }}>
+                    <div style={{ width: 22, height: 22, borderRadius: "50%", border: `2px solid ${sel ? COLORS.teal : COLORS.border}`, background: sel ? COLORS.teal : "white", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      {sel && <span style={{ color: "white", fontSize: 12, fontWeight: 800 }}>✓</span>}
                     </div>
                     <div>
                       <div style={{ fontWeight: 700, fontSize: 14, color: COLORS.navy }}>{k.label}</div>
-                      <div style={{ fontSize: 12, color: COLORS.slate, marginTop: 2 }}>{k.desc}</div>
+                      <div style={{ fontSize: 12, color: COLORS.slate, marginTop: 2, lineHeight: 1.5 }}>{k.desc}</div>
                     </div>
                   </div>
                 );
               })}
             </div>
-            <div style={{ fontSize: 12, color: COLORS.slate, marginTop: 12 }}>
-              {data.kpis.length}/4 KPIs seleccionados
-            </div>
+            <div style={{ fontSize: 12, color: COLORS.slate, marginTop: 10 }}>{data.kpis.length}/4 KPIs seleccionados</div>
           </div>
         )}
 
-        {/* Step 3 — Estrategias */}
-        {step === 3 && (
+        {/* Paso 4 — Estrategias */}
+        {step === 4 && (
           <div style={{ background: "white", borderRadius: 14, padding: 28, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
             <h2 style={{ fontSize: 18, fontWeight: 800, color: COLORS.navy, margin: "0 0 6px" }}>Prioriza tus estrategias</h2>
-            <p style={{ color: COLORS.slate, fontSize: 14, margin: "0 0 8px" }}>
-              Basado en tu nivel de autoridad <strong>{nivelesAutoridad.find(n => n.id === data.autoridad)?.label}</strong>, estas son las estrategias más recomendadas. Selecciona las que vas a implementar.
+            <p style={{ color: COLORS.slate, fontSize: 14, margin: "0 0 6px", lineHeight: 1.6 }}>
+              Con base en tu nivel de autoridad <strong>{nivelesAutoridad.find(n => n.id === data.autoridad)?.label?.toLowerCase()}</strong>, estas son las estrategias más recomendadas para {data.sitio}. Selecciona las que vas a implementar en el plazo de {data.plazo}.
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16 }}>
+            <div style={{ background: COLORS.light, borderRadius: 8, padding: "10px 14px", marginBottom: 18, fontSize: 13, color: COLORS.slate }}>
+              💡 Elige entre 3 y 5 estrategias. Es mejor ejecutar pocas cosas bien que dispersar tus recursos en demasiadas iniciativas a la vez.
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {(estrategiasPorNivel[data.autoridad] || []).map((e, i) => {
-                const selected = data.estrategias.includes(e);
+                const sel = data.estrategias.includes(e);
                 return (
                   <div key={i} onClick={() => toggleEstrategia(e)}
-                    style={{ padding: "14px 16px", border: `1.5px solid ${selected ? COLORS.orange : COLORS.border}`, borderRadius: 9, cursor: "pointer", background: selected ? "#FFF5F2" : "white", display: "flex", alignItems: "flex-start", gap: 12 }}>
-                    <div style={{ width: 22, height: 22, borderRadius: "50%", border: `2px solid ${selected ? COLORS.orange : COLORS.border}`, background: selected ? COLORS.orange : "white", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>
-                      {selected && <span style={{ color: "white", fontSize: 12, fontWeight: 800 }}>✓</span>}
+                    style={{ padding: "13px 16px", border: `1.5px solid ${sel ? COLORS.orange : COLORS.border}`, borderRadius: 9, cursor: "pointer", background: sel ? "#FFF5F2" : "white", display: "flex", alignItems: "flex-start", gap: 12 }}>
+                    <div style={{ width: 22, height: 22, borderRadius: "50%", border: `2px solid ${sel ? COLORS.orange : COLORS.border}`, background: sel ? COLORS.orange : "white", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>
+                      {sel && <span style={{ color: "white", fontSize: 12, fontWeight: 800 }}>✓</span>}
                     </div>
-                    <div style={{ fontSize: 14, color: COLORS.text, lineHeight: 1.5 }}>{e}</div>
+                    <div style={{ fontSize: 14, color: COLORS.text, lineHeight: 1.6 }}>{e}</div>
                   </div>
                 );
               })}
@@ -387,7 +428,7 @@ export default function App() {
           </div>
         )}
 
-        {/* Navigation */}
+        {/* Navegación */}
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: 20 }}>
           {step > 0 ? (
             <button onClick={() => setStep(s => s - 1)}
