@@ -255,6 +255,9 @@ export default function App() {
             Crear otra estrategia
           </button>
         </div>
+        <p style={{ marginTop: 12, fontSize: 12, color: COLORS.slate, textAlign: "center" }}>
+          Se descarga como HTML — ábrelo en tu navegador e imprímelo como PDF.
+        </p>
       </div>
     </div>
   );
